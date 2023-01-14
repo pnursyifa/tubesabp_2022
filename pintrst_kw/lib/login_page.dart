@@ -1,8 +1,25 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:pintrst_kw/screen/main_nav.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final loginController = TextEditingController();
+
+  @override
+  void dispose() {
+    loginController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +53,7 @@ class LoginPage extends StatelessWidget {
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
+                controller: loginController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
@@ -47,6 +65,7 @@ class LoginPage extends StatelessWidget {
                   left: 15.0, right: 15.0, top: 15, bottom: 40),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
+                controller: loginController,
                 obscureText: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -62,8 +81,9 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => LoginPage()));
+                  signInWithEmailAndPassword();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => MainNavigation()));
                 },
                 child: Text(
                   'Login',
@@ -81,3 +101,20 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+
+void signInWithEmailAndPassword() {
+    try {
+      var emailAddress = ;
+      var password = ;
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailAddress,
+      password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+  }

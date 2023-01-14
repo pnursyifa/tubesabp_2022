@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "481360520591",
+    "project_id": "tubesabp2022-pintrst-kw",
+    "storage_bucket": "tubesabp2022-pintrst-kw.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481360520591:android:104dec7e323a455ebf17fa",
+        "android_client_info": {
+          "package_name": "com.example.pintrst_kw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481360520591-uhllqj5rp0e2219b5r6ecquo31571ali.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWwA2KdOcEns_-acaWl1JKRfx13G-x9Go"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481360520591-uhllqj5rp0e2219b5r6ecquo31571ali.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
