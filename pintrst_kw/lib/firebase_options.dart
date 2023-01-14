@@ -8,11 +8,11 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-import 'firebase_options.dart';
+/// import 'firebase_options.dart';
 /// // ...
-await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
+/// await Firebase.initializeApp(
+///   options: DefaultFirebaseOptions.currentPlatform,
+/// );
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
@@ -73,6 +73,4 @@ class DefaultFirebaseOptions {
     iosClientId: '481360520591-cv0uqvaqn46qdllvf5mmossqu6gk5f68.apps.googleusercontent.com',
     iosBundleId: 'com.example.pintrstKw',
   );
-
-  
 }

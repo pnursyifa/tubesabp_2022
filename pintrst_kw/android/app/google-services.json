@@ -29,6 +29,13 @@
             {
               "client_id": "481360520591-uhllqj5rp0e2219b5r6ecquo31571ali.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "481360520591-cv0uqvaqn46qdllvf5mmossqu6gk5f68.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pintrstKw"
+              }
             }
           ]
         }

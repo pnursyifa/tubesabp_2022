@@ -7,19 +7,19 @@ import 'package:pintrst_kw/screen/main_nav.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final loginController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
-  @override
+  /*  @override
   void dispose() {
     loginController.dispose();
     super.dispose();
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                controller: loginController,
+                controller: emailController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                   left: 15.0, right: 15.0, top: 15, bottom: 40),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                controller: loginController,
+                controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -81,9 +81,12 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
-                  signInWithEmailAndPassword();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => MainNavigation()));
+                  signInWithEmailAndPassword(
+                      emailController.text, passwordController.text);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const MainNavigation()));
                 },
                 child: Text(
                   'Login',
@@ -102,19 +105,17 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-void signInWithEmailAndPassword() {
-    try {
-      var emailAddress = ;
-      var password = ;
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+Future<void> signInWithEmailAndPassword(emailAddress, password) async {
+  try {
+    final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: emailAddress,
       password: password,
-      );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
+    );
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'user-not-found') {
+      print('No user found for that email.');
+    } else if (e.code == 'wrong-password') {
+      print('Wrong password provided for that user.');
     }
   }
+}
